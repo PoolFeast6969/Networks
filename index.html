@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+
+<head>
+    <title>Problem Solving Methodology</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Solve Problems with Methodology">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="flowtype.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    
+<style>
+    html {
+        -webkit-font-smoothing: antialiased;
+        background: #444;
+        overflow-x: hidden;
+        cursor: default;
+        font-family: 'Open Sans', sans-serif;
+    }
+    body {
+        max-width: 60em;
+        color: white;
+        position: absolute;
+        min-height: calc(100% - 50px);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    footer {
+        position: absolute;
+        background: black;
+        text-align: center;
+        bottom: -50px;
+        margin: 0 auto;
+        z-index: -1;
+        padding: 5px;
+        width: 100vw;
+        left: calc(-50vw + 50%);
+    }
+    header,
+    nav {
+        background: black;
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        left: calc(-50vw + 50%);
+    }
+    header {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: calc(100vh - 80px)
+    }
+    header .subtitle {
+        text-align: center;
+    }
+    header img {
+        width: 85vmin;
+        align-self: center;
+    }
+    .title {
+        font-weight: bold;
+        font-size: 8.5em;
+        white-space: nowrap;
+        border: white solid 8px;
+        padding: 10px;
+        margin: 10px;
+    }
+    nav {
+        justify-content: center;
+        z-index: 1;
+        position: absolute;
+        height: 80px;
+    }
+    nav .top {
+        width: 0;
+        height: 0;
+        border-color: transparent transparent white transparent;  
+        -webkit-transition: all 0.3s;
+        position: absolute;
+        right: -40px;
+        bottom: calc(50% - 10px);
+        border-width: 0 20px 20px 20px;
+        border-style: solid;
+    }
+    nav.scroll {
+        position: fixed;
+        box-shadow: initial;
+        top: 0;
+        margin: 0 auto;
+    }
+    nav.scroll .top{
+        right: 10px;
+    }
+    header.title {
+        font-size: 8.5em;
+        white-space: nowrap;
+    }
+    .button {
+        font-size: large;
+        color: inherit;
+        border: white solid;
+        background: transparent;
+        font-family: 'Roboto', sans-serif;
+        margin: 3px;
+        -webkit-transition: all 0.3s;
+    }
+    .button:after {
+        top: 100%;
+        left: 50%;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-width: 30px;
+        margin-left: -30px;
+    }
+    .button:hover {
+        border-radius: 50px;
+    }
+    .link:active, .arrow:active, .button:active {
+        -webkit-transform: scale(0.8, 0.8);
+    }
+    .invis {
+        display: none;
+    }
+    #analysis, 
+    #design, 
+    #development, 
+    #evaluation {
+        width: auto;
+        margin: 90px 10px;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+        min-height: calc(100vh - 100px);
+        border-radius: 5px;
+        color: black;
+    }
+    .sectiontitle {
+        font-size: 600%;
+    }
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    *:focus {
+        outline: none;
+    }
+</style>
+</head>
+
+<body>
+    <script>    
+        $('body').flowtype({
+            maximum   : 500,
+            fontRatio : 30
+        });
+    </script>
+    <header>
+        <div class="subtitle">
+            <div class="title">PSM</div>
+            <div>Year 12 ICT</div>
+            <div>Problem Solving Methodology</div>
+        </div>
+        <img src="diagram.png">
+    </header>
+    <nav>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#analysis').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#analysis').offset().top -90 }, 'slow');">Analysis</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#design').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#design').offset().top -90 }, 'slow');">Design</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#development').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#development').offset().top -90 }, 'slow');">Development</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#evaluation').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#evaluation').offset().top -90 }, 'slow');">Evaluation</button>
+        <div class="top" onclick="$('html, body').animate({ scrollTop: 0 }, 'slow');" onfocus="$('html, body').animate({ scrollTop: 0 }, 'slow');"></div>
+        <script>
+            $(window).scroll(function () {
+                if ($(this).scrollTop()+1 >= $('header').height()) {
+                    $('nav').addClass("scroll");
+                } else {
+                    $('nav').removeClass("scroll");
+                }
+            });
+        </script>
+    </nav>
+    <div class="parralax">
+        <section id="analysis">
+            <div class="sectiontitle">
+                Analysis
+            </div>
+            <div class="sectioncontent">
+                <ul>
+                    <li>Determining the solution requirements. What information does the solution have to provide? What data is needed to produce the information? What functions does the solution have to provide? These requirements can be classified as being functional, namely what the solution is required to do, and non-functional, which describes the attributes the solution should possess, such as user- friendliness, reliability, portability, robustness, maintainability. Tools to assist in determining the solution requirements include context diagrams, data flow diagrams and use cases.</li>
+                    <li>Identifying the constraints on the solution. What conditions need to be considered when designing a solution? Typical constraints include cost, speed of processing, requirements of users, legal requirements, security, compatibility, level of expertise, capacity, availability of equipment.</li>
+                    <li>Determining the scope of the solution. What can the solution do? What can’t the solution do? What are the benefits of the solution to the user? The scope states the boundaries or parameters of the solution. Benefits can be stated in terms of their efficiency and effectiveness.</li>
+                </ul>
+            </div>
+        </section>
+        <section id="design">
+            <div class="sectiontitle">
+                Design
+            </div>
+            <div class="sectioncontent">
+                <ul>
+                    <li>Planning how the solution will function, and the appearance of the resulting information. The solution design typically involves identifying what specific data is required and how the data will be named, structured, validated and manipulated. Typical design tools for this purpose include data dictionaries and data structure diagrams, input-process-output (IPO) charts, flowcharts, pseudocode, object descriptions. Solution design also involves, where appropriate, showing how the various components of a solution relate to one another, for example web pages, style sheets, scripts; queries, forms, reports; modules, procedures, functions. Typical design tools used to show relationships include storyboards, site maps, entity-relationship diagrams, data flow diagrams, structure charts, hierarchy charts, context diagrams, use cases. Planning the solution also involves determining the appearance of information generated from a solution. This typically involves identifying the position of text, images and graphics, font sizes, colours and text enhancements. Design tools used for this purpose include layout diagrams, annotated diagrams/mocks up.</li>
+                    <li>Determining the evaluation criteria. What measures will be used to judge whether or not the solution requirements have been met? These criteria should relate to the solution requirements identified in the analysis stage.</li>
+                </ul>
+            </div>
+        </section>
+        <section id="development">
+            <div class="sectiontitle">
+                Development
+            </div>
+            <div class="sectioncontent">
+                <ul>
+                    <li>Electronically manipulating (or coding) data to ‘build’ or create the solution following initial designs. Where appropriate, internal documentation is also written, which documents the functioning of the solution.</li>
+                    <li>Validation to check for the reasonableness of data being input. Validation can be both manual and electronic. Proofreading is a manual technique and it occurs when data is entered directly into the solution and remains fixed, such as in a web page. When the validation process has been built into the solution (electronic technique), then its effectiveness is determined through the testing activity.</li>
+                    <li>Testing whether the solution does what it was intended to do. This activity typically involves:
+                        <ul>
+                            <li>establishing what tests will be conducted</li>
+                            <li>determining what test data, if any, will be used</li>
+                            <li>determining expected results</li>
+                            <li>conducting the test</li>
+                            <li>recording the actual results</li>
+                            <li>correcting any identified errors.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="evaluation">
+            <div class="sectiontitle">
+                Evaluation
+            </div>
+            <div class="sectioncontent">
+                <ul>
+                    <li>Determining a strategy for finding out the extent to which the solution meets the required needs. Typically this would include specifying a timeline, outlining what data will be collected and by what methods and techniques, and how the data relates to the criteria, which were developed in the designing stage.</li>
+                    <li>Reporting on the extent to which the solution meets the requirements of the user. It usually takes place after the solution has been used by the user/client and is based on the criteria developed in the designing stage.</li>
+                </ul>
+            </div>
+        </section>
+    </div>    
+
+
+    <footer>
+        By Jack
+        <br>&copy; Billson420
+    </footer>
+</body>
