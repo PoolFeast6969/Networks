@@ -51,14 +51,11 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
-        height: calc(100vh - 80px)
-    }
-    header .subtitle {
-        text-align: center;
+        height: calc(100vh - 80px);
+        padding-bottom: 5px;
     }
     header img {
-        width: 85vmin;
-        align-self: center;
+        flex: 1 1 auto;
     }
     .title {
         font-weight: bold;
@@ -67,6 +64,7 @@
         border: white solid 8px;
         padding: 10px;
         margin: 10px;
+        flex: 0 0 auto;
     }
     nav {
         justify-content: center;
@@ -94,10 +92,6 @@
     nav.scroll .top{
         right: 10px;
     }
-    header.title {
-        font-size: 8.5em;
-        white-space: nowrap;
-    }
     .button {
         font-size: large;
         color: inherit;
@@ -106,22 +100,43 @@
         font-family: 'Roboto', sans-serif;
         margin: 3px;
         -webkit-transition: all 0.3s;
+        position: relative;
     }
-    .button:after {
+    nav:not(.scroll) .button:hover {
+        margin-bottom: 40px;
+    }
+    nav.scroll .button:hover {
+        border-radius: 50px;
+    }
+    .button:after, .button:before {
         top: 100%;
         left: 50%;
+        border: solid transparent;
         content: " ";
         height: 0;
         width: 0;
         position: absolute;
-        pointer-events: none;
-        border-width: 30px;
-        margin-left: -30px;
+        -webkit-transition: all 0.3s;
+        border-width: 0;
+        margin-left: 0;
     }
-    .button:hover {
-        border-radius: 50px;
+    nav:not(.scroll) .button:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: black;
     }
-    .link:active, .arrow:active, .button:active {
+    nav:not(.scroll) .button:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-top-color: white;
+    }
+    .button:hover:after {
+        border-width: 25px;
+        margin-left: -25px;
+    }
+    .button:hover:before {
+        border-width: 29px;
+        margin-left: -29px;
+    }
+    .link:active, .arrow:active, .button:active, .top:active {
         -webkit-transform: scale(0.8, 0.8);
     }
     .invis {
@@ -163,11 +178,9 @@
         });
     </script>
     <header>
-        <div class="subtitle">
-            <div class="title">PSM</div>
-            <div>Year 12 ICT</div>
-            <div>Problem Solving Methodology</div>
-        </div>
+        <div class="title">PSM</div>
+        <div>Year 12 ICT</div>
+        <div>Problem Solving Methodology</div>
         <img src="diagram.png">
     </header>
     <nav>
