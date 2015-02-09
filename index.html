@@ -71,6 +71,7 @@
         z-index: 1;
         position: absolute;
         height: 80px;
+        overflow: hidden;
     }
     nav .top {
         width: 0;
@@ -121,11 +122,11 @@
         margin-left: 0;
     }
     nav:not(.scroll) .button:after {
-        border-color: rgba(136, 183, 213, 0);
+        border-color: transparent;
         border-top-color: black;
     }
     nav:not(.scroll) .button:before {
-        border-color: rgba(194, 225, 245, 0);
+        border-color: transparent;
         border-top-color: white;
     }
     .button:hover:after {
