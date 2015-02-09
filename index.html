@@ -3,12 +3,12 @@
 <head>
     <title>Networks</title>
     <meta charset="utf-8">
-    <meta name="description" content="Solve Problems with Methodology">
+    <meta name="description" content="Learn about Networks">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="jquery-1.11.1.min.js"></script>
     <script src="flowtype.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     
 <style>
     html {
@@ -39,6 +39,7 @@
         flex-direction: row;
         width: 100vw;
         left: calc(-50vw + 50%);
+        overflow: hidden;
     }
     header {
         flex-direction: column;
@@ -49,24 +50,22 @@
         padding-bottom: 5px;
     }
     header img {
-        -webkit-animation: clip 1s infinite;
-        -webkit-clip-path: polygon(100% 50%,84.70057014808336% 54.5684167277018%,91.0518476172854% 60.99980941685713%,82.33578363789503% 63.39392013277814%,93.30127018922194% 75%,77.76736691019323% 71.30665001530522%,80.05203820042827% 80.05203820042827%,71.30665001530522% 77.76736691019323%,75% 93.30127018922192%,63.39392013277814% 82.33578363789503%,60.99980941685714% 91.0518476172854%,54.56841672770181% 84.70057014808336%,50% 100%,45.4315832722982% 84.70057014808336%,39.000190583142874% 91.0518476172854%,36.606079867221865% 82.33578363789505%,25.00000000000001% 93.30127018922194%,28.693349984694787% 77.76736691019323%,19.947961799571733% 80.05203820042827%,22.23263308980677% 71.30665001530522%,6.698729810778076% 75.00000000000001%,17.664216362104966% 63.39392013277815%,8.948152382714603% 60.99980941685715%,15.299429851916635% 54.568416727701816%,0% 50.00000000000001%,15.299429851916635% 45.431583272298205%,8.94815238271459% 39.00019058314288%,17.66421636210496% 36.60607986722188%,6.698729810778062% 25.000000000000014%,22.23263308980676% 28.693349984694787%,19.947961799571715% 19.947961799571747%,28.69334998469477% 22.232633089806775%,24.99999999999998% 6.698729810778083%,36.60607986722184% 17.664216362104973%,39.00019058314284% 8.948152382714603%,45.43158327229816% 15.299429851916642%,49.99999999999999% 0%,54.568416727701795% 15.299429851916635%,60.99980941685711% 8.94815238271459%,63.39392013277812% 17.66421636210496%,74.99999999999997% 6.6987298107780475%,71.3066500153052% 22.23263308980675%,80.05203820042826% 19.947961799571722%,77.76736691019323% 28.69334998469477%,93.30127018922192% 24.99999999999998%,82.33578363789502% 36.60607986722184%,91.0518476172854% 39.00019058314283%,84.70057014808336% 45.43158327229816%);
-    }
+               flex: 1 0 auto;
+    }  
     .title {
-        font-weight: bold;
+        font-weight: 300;
         font-size: 8.5em;
         white-space: nowrap;
-        border: white solid 8px;
-        padding: 10px;
-        margin: 10px;
-        flex: 0 0 auto;
+        margin: 5px;
+        flex: 0 1 auto;
+        z-index: 1;
+        text-shadow: 0 0 5px black;
     }
     nav {
-        justify-content: center;
         z-index: 1;
         position: absolute;
         height: 80px;
-        overflow: hidden;
+        -webkit-transition: padding 0.3s;
     }
     nav .top {
         width: 0;
@@ -84,9 +83,10 @@
         box-shadow: initial;
         top: 0;
         margin: 0 auto;
+        padding-right: 50px;
     }
     nav.scroll .top{
-        right: 10px;
+        right: 6px;
     }
     .button {
         font-size: large;
@@ -97,9 +97,11 @@
         margin: 3px;
         -webkit-transition: all 0.3s;
         position: relative;
+        min-width: 70px;
+        flex: 1 1 auto;
     }
     nav:not(.scroll) .button:hover {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
     nav.scroll .button:hover {
         border-radius: 50px;
@@ -135,22 +137,21 @@
     .link:active, .arrow:active, .button:active, .top:active {
         -webkit-transform: scale(0.8, 0.8);
     }
-    #analysis, 
-    #design, 
-    #development, 
-    #evaluation {
+    section {
         width: auto;
         margin: 90px 10px;
         background: white;
         flex-direction: column;
         align-items: stretch;
         padding: 20px;
-        min-height: calc(100vh - 100px);
+        height: calc(100vh - 100px);
         border-radius: 5px;
         color: black;
+        overflow: auto;
     }
     .sectiontitle {
         font-size: 600%;
+        font-weight: 300;
     }
     *,
     *:before,
@@ -159,17 +160,6 @@
     }
     *:focus {
         outline: none;
-    }
-    @-webkit-keyframes clip {
-      0% {
-        -webkit-clip-path: polygon(100% 50%,84.70057014808336% 54.5684167277018%,91.0518476172854% 60.99980941685713%,82.33578363789503% 63.39392013277814%,93.30127018922194% 75%,77.76736691019323% 71.30665001530522%,80.05203820042827% 80.05203820042827%,71.30665001530522% 77.76736691019323%,75% 93.30127018922192%,63.39392013277814% 82.33578363789503%,60.99980941685714% 91.0518476172854%,54.56841672770181% 84.70057014808336%,50% 100%,45.4315832722982% 84.70057014808336%,39.000190583142874% 91.0518476172854%,36.606079867221865% 82.33578363789505%,25.00000000000001% 93.30127018922194%,28.693349984694787% 77.76736691019323%,19.947961799571733% 80.05203820042827%,22.23263308980677% 71.30665001530522%,6.698729810778076% 75.00000000000001%,17.664216362104966% 63.39392013277815%,8.948152382714603% 60.99980941685715%,15.299429851916635% 54.568416727701816%,0% 50.00000000000001%,15.299429851916635% 45.431583272298205%,8.94815238271459% 39.00019058314288%,17.66421636210496% 36.60607986722188%,6.698729810778062% 25.000000000000014%,22.23263308980676% 28.693349984694787%,19.947961799571715% 19.947961799571747%,28.69334998469477% 22.232633089806775%,24.99999999999998% 6.698729810778083%,36.60607986722184% 17.664216362104973%,39.00019058314284% 8.948152382714603%,45.43158327229816% 15.299429851916642%,49.99999999999999% 0%,54.568416727701795% 15.299429851916635%,60.99980941685711% 8.94815238271459%,63.39392013277812% 17.66421636210496%,74.99999999999997% 6.6987298107780475%,71.3066500153052% 22.23263308980675%,80.05203820042826% 19.947961799571722%,77.76736691019323% 28.69334998469477%,93.30127018922192% 24.99999999999998%,82.33578363789502% 36.60607986722184%,91.0518476172854% 39.00019058314283%,84.70057014808336% 45.43158327229816%);
-      }
-      50% {
-        -webkit-clip-path: polygon(84.70057014808336% 54.5684167277018%,91.0518476172854% 60.99980941685713%,82.33578363789503% 63.39392013277814%,93.30127018922194% 75%,77.76736691019323% 71.30665001530522%,80.05203820042827% 80.05203820042827%,71.30665001530522% 77.76736691019323%,75% 93.30127018922192%,63.39392013277814% 82.33578363789503%,60.99980941685714% 91.0518476172854%,54.56841672770181% 84.70057014808336%,50% 100%,45.4315832722982% 84.70057014808336%,39.000190583142874% 91.0518476172854%,36.606079867221865% 82.33578363789505%,25.00000000000001% 93.30127018922194%,28.693349984694787% 77.76736691019323%,19.947961799571733% 80.05203820042827%,22.23263308980677% 71.30665001530522%,6.698729810778076% 75.00000000000001%,17.664216362104966% 63.39392013277815%,8.948152382714603% 60.99980941685715%,15.299429851916635% 54.568416727701816%,0% 50.00000000000001%,15.299429851916635% 45.431583272298205%,8.94815238271459% 39.00019058314288%,17.66421636210496% 36.60607986722188%,6.698729810778062% 25.000000000000014%,22.23263308980676% 28.693349984694787%,19.947961799571715% 19.947961799571747%,28.69334998469477% 22.232633089806775%,24.99999999999998% 6.698729810778083%,36.60607986722184% 17.664216362104973%,39.00019058314284% 8.948152382714603%,45.43158327229816% 15.299429851916642%,49.99999999999999% 0%,54.568416727701795% 15.299429851916635%,60.99980941685711% 8.94815238271459%,63.39392013277812% 17.66421636210496%,74.99999999999997% 6.6987298107780475%,71.3066500153052% 22.23263308980675%,80.05203820042826% 19.947961799571722%,77.76736691019323% 28.69334998469477%,93.30127018922192% 24.99999999999998%,82.33578363789502% 36.60607986722184%,91.0518476172854% 39.00019058314283%,84.70057014808336% 45.43158327229816%,100% 50%);
-      }
-       100% {
-        -webkit-clip-path: polygon(91.0518476172854% 60.99980941685713%,82.33578363789503% 63.39392013277814%,93.30127018922194% 75%,77.76736691019323% 71.30665001530522%,80.05203820042827% 80.05203820042827%,71.30665001530522% 77.76736691019323%,75% 93.30127018922192%,63.39392013277814% 82.33578363789503%,60.99980941685714% 91.0518476172854%,54.56841672770181% 84.70057014808336%,50% 100%,45.4315832722982% 84.70057014808336%,39.000190583142874% 91.0518476172854%,36.606079867221865% 82.33578363789505%,25.00000000000001% 93.30127018922194%,28.693349984694787% 77.76736691019323%,19.947961799571733% 80.05203820042827%,22.23263308980677% 71.30665001530522%,6.698729810778076% 75.00000000000001%,17.664216362104966% 63.39392013277815%,8.948152382714603% 60.99980941685715%,15.299429851916635% 54.568416727701816%,0% 50.00000000000001%,15.299429851916635% 45.431583272298205%,8.94815238271459% 39.00019058314288%,17.66421636210496% 36.60607986722188%,6.698729810778062% 25.000000000000014%,22.23263308980676% 28.693349984694787%,19.947961799571715% 19.947961799571747%,28.69334998469477% 22.232633089806775%,24.99999999999998% 6.698729810778083%,36.60607986722184% 17.664216362104973%,39.00019058314284% 8.948152382714603%,45.43158327229816% 15.299429851916642%,49.99999999999999% 0%,54.568416727701795% 15.299429851916635%,60.99980941685711% 8.94815238271459%,63.39392013277812% 17.66421636210496%,74.99999999999997% 6.6987298107780475%,71.3066500153052% 22.23263308980675%,80.05203820042826% 19.947961799571722%,77.76736691019323% 28.69334998469477%,93.30127018922192% 24.99999999999998%,82.33578363789502% 36.60607986722184%,91.0518476172854% 39.00019058314283%,84.70057014808336% 45.43158327229816%,100% 50%,84.70057014808336% 54.5684167277018%);
-      }
     }
 </style>
 </head>
@@ -183,19 +173,20 @@
     </script>
     <header>
         <div class="title">Networks</div>
-        <div>Year 12 ICT</div>
-        <div>Network Types and Hardware</div>
-        <img src="network.png">
+        <img src="ethernet.png">
     </header>
     <nav>
-        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#analysis').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#analysis').offset().top -90 }, 'slow');">Analysis</button>
-        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#design').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#design').offset().top -90 }, 'slow');">Design</button>
-        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#development').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#development').offset().top -90 }, 'slow');">Development</button>
-        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#evaluation').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#evaluation').offset().top -90 }, 'slow');">Evaluation</button>
-        <div class="top" onclick="$('html, body').animate({ scrollTop: 0 }, 'slow');" onfocus="$('html, body').animate({ scrollTop: 0 }, 'slow');"></div>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#types').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#types').offset().top -90 }, 'slow');">Types</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#hardware').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#hardware').offset().top -90 }, 'slow');">Hardware</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#software').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#software').offset().top -90 }, 'slow');">Software</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#wired').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#wired').offset().top -90 }, 'slow');">Wired</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#wireless').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#wireless').offset().top -90 }, 'slow');">Wireless</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#threats').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#threats').offset().top -90 }, 'slow');">Threats</button>
+        <button class="button" tabindex="0" onclick="$('html,body').animate({ scrollTop: $('#security').offset().top -90 }, 'slow');" onfocus="$('html,body').animate({ scrollTop: $('#security').offset().top -90 }, 'slow');">Security</button>
+        <div class="top" tabindex="0" onclick="$('html, body').animate({ scrollTop: 0 }, 'slow');" onfocus="$('html, body').animate({ scrollTop: 0 }, 'slow');"></div>
         <script>
             $(window).scroll(function () {
-                if ($(this).scrollTop()+1 >= $('header').height()) {
+                if ($(this).scrollTop()+0.001 >= $('header').height()) {
                     $('nav').addClass("scroll");
                 } else {
                     $('nav').removeClass("scroll");
@@ -203,90 +194,274 @@
             });
         </script>
     </nav>
-    <div class="parralax">
-        <section id="analysis">
-            <div class="sectiontitle">
-                Types of Networks
-            </div>
-            <div class="sectioncontent">
-                <ul>
-                    <li>Local Area Network (LAN)
-                        <ul>
-                            <li>LAN refers to a group of computers linked together across a small geographical area (ie. a
+    <section id="types">
+        <div class="sectiontitle">
+            Types
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Local Area Network (LAN)
+                    <ul>
+                        <li>LAN refers to a group of computers linked together across a small geographical area (ie. a
 building or a group of buildings close together)</li>
-                            <li>For example, your school would have a LAN</li>
-                            <li>LANs are usually connected with coaxial or CAT5 cables</li>
-                        </ul>
-                    </li>
-                    <li>Wide Area Network (WAN)
-                        <ul>
-                            <li>WAN refers to a group of LANs linked together across a large geographical area</li>
-                            <li>For example, an organisation with many locations across the city, state or overseas</li>
-                            <li>WANs are usually connected using ISDN landlines, satellite or internet</li>
-                        </ul>
-                    </li>
-                    <li>Peer to Peer (P2P)</li>
-                        <ul>
-                            <li>P2P refers to computers communicating and sharing information directly with each other</li>
-                            <li>This is not a very efficient way to set up the network and is only used in small situations</li>
-                        </ul>
-                    <li>Client / Server</li>
-                        <ul>
-                            <li>Client / Server refers to when there is a master computer (server) linked to a number of
+                        <li>For example, your school would have a LAN</li>
+                        <li>LANs are usually connected with coaxial or CAT5 cables</li>
+                    </ul>
+                </li>
+                <li>Wide Area Network (WAN)
+                    <ul>
+                        <li>WAN refers to a group of LANs linked together across a large geographical area</li>
+                        <li>For example, an organisation with many locations across the city, state or overseas</li>
+                        <li>WANs are usually connected using ISDN landlines, satellite or internet</li>
+                    </ul>
+                </li>
+                <li>Peer to Peer (P2P)</li>
+                    <ul>
+                        <li>P2P refers to computers communicating and sharing information directly with each other</li>
+                        <li>This is not a very efficient way to set up the network and is only used in small situations</li>
+                    </ul>
+                <li>Client / Server</li>
+                    <ul>
+                        <li>Client / Server refers to when there is a master computer (server) linked to a number of
 workstation (clients)</li>
-                            <li>The server is usually more expensive and faster as it is the one which controls the sharing of
+                        <li>The server is usually more expensive and faster as it is the one which controls the sharing of
 information with the clients</li>
-                            <li>Unlike P2P, the clients only communicate with the server, they do not communicate with each
+                        <li>Unlike P2P, the clients only communicate with the server, they do not communicate with each
 other</li>
-                        </ul>
-                </ul>
-            </div>
-        </section>
-        <section id="design">
-            <div class="sectiontitle">
-                Design
-            </div>
-            <div class="sectioncontent">
-                <ul>
-                    <li>Planning how the solution will function, and the appearance of the resulting information. The solution design typically involves identifying what specific data is required and how the data will be named, structured, validated and manipulated. Typical design tools for this purpose include data dictionaries and data structure diagrams, input-process-output (IPO) charts, flowcharts, pseudocode, object descriptions. Solution design also involves, where appropriate, showing how the various components of a solution relate to one another, for example web pages, style sheets, scripts; queries, forms, reports; modules, procedures, functions. Typical design tools used to show relationships include storyboards, site maps, entity-relationship diagrams, data flow diagrams, structure charts, hierarchy charts, context diagrams, use cases. Planning the solution also involves determining the appearance of information generated from a solution. This typically involves identifying the position of text, images and graphics, font sizes, colours and text enhancements. Design tools used for this purpose include layout diagrams, annotated diagrams/mocks up.</li>
-                    <li>Determining the evaluation criteria. What measures will be used to judge whether or not the solution requirements have been met? These criteria should relate to the solution requirements identified in the analysis stage.</li>
-                </ul>
-            </div>
-        </section>
-        <section id="development">
-            <div class="sectiontitle">
-                Development
-            </div>
-            <div class="sectioncontent">
-                <ul>
-                    <li>Electronically manipulating (or coding) data to ‘build’ or create the solution following initial designs. Where appropriate, internal documentation is also written, which documents the functioning of the solution.</li>
-                    <li>Validation to check for the reasonableness of data being input. Validation can be both manual and electronic. Proofreading is a manual technique and it occurs when data is entered directly into the solution and remains fixed, such as in a web page. When the validation process has been built into the solution (electronic technique), then its effectiveness is determined through the testing activity.</li>
-                    <li>Testing whether the solution does what it was intended to do. This activity typically involves:
-                        <ul>
-                            <li>establishing what tests will be conducted</li>
-                            <li>determining what test data, if any, will be used</li>
-                            <li>determining expected results</li>
-                            <li>conducting the test</li>
-                            <li>recording the actual results</li>
-                            <li>correcting any identified errors.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section id="evaluation">
-            <div class="sectiontitle">
-                Evaluation
-            </div>
-            <div class="sectioncontent">
-                <ul>
-                    <li>Determining a strategy for finding out the extent to which the solution meets the required needs. Typically this would include specifying a timeline, outlining what data will be collected and by what methods and techniques, and how the data relates to the criteria, which were developed in the designing stage.</li>
-                    <li>Reporting on the extent to which the solution meets the requirements of the user. It usually takes place after the solution has been used by the user/client and is based on the criteria developed in the designing stage.</li>
-                </ul>
-            </div>
-        </section>
-    </div>    
-
+                    </ul>
+            </ul>
+        </div>
+    </section>
+    <section id="hardware">
+        <div class="sectiontitle">
+            Hardware
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Network Interface Card (NIC)
+                    <ul>
+                        <li>A NIC is used to link a computer or server to a network</li>
+                        <li>NICs are also used in any other resource (eg printer) that is linked to a network</li>
+                        <li>A NIC connects to the network by wired or wireless transmission media</li>
+                    </ul>
+                </li>
+                <li>Modem 
+                    <ul>
+                        <li>A modem is a device that sends digital signals via a telephone line</li>
+                        <li>When uploading messages, the modem modulates, which means that it converts the digital data 
+into analogue signal so that it can be sent via the telephone line</li>
+                        <li>When downloading messages, the modem demodulates, which means it converts the sound back 
+into a digital signal so it can be understood by the computer</li>
+                    </ul>
+                </li>
+                <li>Cables
+                    <ul>
+                        <li>Cables are used to connect computers and devices to a network</li>
+                        <li>By transferring electronic signals through strands of material that conduct electromagnetic waves</li>
+                    </ul>
+                </li>
+                <li>Switch
+                    <ul>
+                        <li>A switch is a connection point that links to a number of cables coming from various computers or 
+devices. It stores address information about all of these devices</li>
+                        <li>The switch receives the information from the device and determines the correct path for the 
+message to be sent</li>
+                    </ul>
+                </li>
+                <li>Server
+                    <ul>
+                        <li>A server is a large, expensive computer designed to be the master of the network</li>
+                        <li>The server is the core of the system that helps decides how data and resources are shared among 
+the devices on the network</li>
+                    </ul>
+                </li>
+                <li>Router
+                    <ul>
+                        <li>Routers are used to join various networks together</li>
+                        <li>This may be connecting a LAN to another LAN or a WAN</li>
+                        <li>The router also acts as security between the different networks, only allowing authorised access</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="software">
+        <div class="sectiontitle">
+            Software
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Network Operating Software (NOS)
+                    <ul>
+                        <li>NOS is the software that is used to control the network</li>
+                        <li>There is specific software for the servers and another software for the computers connected to the network</li>
+                        <li>NOS prioritises and controls the devices on the network</li>
+                        <li>NOS managers the security so that only authorised users can access the resources</li>
+                    </ul>
+                </li>
+                <li>Application software
+                    <ul>
+                        <li>There is also software that is designed to be used by computers within a network. These include: 
+                            <ul>
+                                <li>Electronic mail</li>
+                                <li>File transfer protocols</li>
+                                <li>Web browser</li>
+                                <li>Video conferencing</li>
+                                <li>Instant messaging</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="wired">
+        <div class="sectiontitle">
+            Wired
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Unshielded Twisted Pair cable (UTP)
+                    <ul>
+                        <li>Four pairs of twisted wires are twisted together as a group</li>
+                        <li>Prevents outside interference because wires are not running parallel to any outside cables</li>
+                        <li>Category 6 (CAT6) is currently the most popular for new installations</li>
+                    </ul>
+                </li>
+                <li>Fibre optic
+                    <ul>
+                        <li>Made from special glass or plastic strands</li>
+                        <li>Transmit data through light pulses</li>
+                        <li>Can carry data up to two kilometres as the light is not susceptible to electromagnetic interference</li>
+                        <li>Two strands are required to for two way traffic as each strand only transmits data one way</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="wireless">
+        <div class="sectiontitle">
+            Wireless
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Radio waves
+                    <ul>
+                        <li>A transmitter is required to broadcast the signal and a receiver is required to accept it</li>
+                        <li>This can be used over long distance or a short distance</li>
+                        <li>Can be susceptible to noise</li>
+                        <li>Bluetooth uses radio waves</li>
+                    </ul>
+                </li>
+                <li>Microwaves
+                    <ul>
+                        <li>Requires a concave dish, antenna and transceiver</li>
+                        <li>Usually located on hills or towers as they require no interference between the sending and receiving dish</li>
+                        <li>Can carry data up to two kilometres as the light is not susceptible to electromagnetic interference</li>
+                        <li>Can handle large amounts of data over short distance</li>
+                    </ul>
+                </li>
+                <li>Infrared
+                    <ul>
+                        <li>Uses technology that is similar to a television remote control</li>
+                        <li>Good for short distances of about 5 metres but can be slow</li>
+                        <li>Infrared is used by (very old) laptops and mobiles</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="threats">
+        <div class="sectiontitle">
+            Threats
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Viruses
+                    <ul>
+                        <li>Infect a computer by negatively impacting the way it works</li>
+                        <li>Presents itself by being attached to an executable program</li>
+                        <li>Can take data from computer to elsewhere</li>
+                    </ul>
+                </li>
+                <li>Worms
+                    <ul>
+                        <li>A virus that replicates itself, taking up space on a computer</li>
+                        <li>Sends copies of itself to other computers</li>
+                        <li>Can present itself via emails</li>
+                    </ul>
+                </li>
+                <li>Trojan
+                    <ul>
+                        <li>Infects a computer changing the way it is connected or the way it is displayed</li>
+                        <li>Presents itself by tricking users into downloading an application then installing itself on their system</li>
+                    </ul>
+                </li>
+                <li>Spyware
+                    <ul>
+                        <li>Monitors the users actions and secretly collects information about users without them knowing</li>
+                        <li>Information that may collected include personal or banking information, as well as websites they 
+visit</li>
+                    </ul>
+                </li>
+                <li>Hackers
+                    <ul>
+                        <li>An unauthorized outsider accesses the information system in order to obtain confidential 
+information</li>
+                        <li>Usually they intend to look at or alter data</li>
+                        <li>Run hack.bat to become the batman</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="security">
+        <div class="sectiontitle">
+            Security
+        </div>
+        <div class="sectioncontent">
+            <ul>
+                <li>Antivirus software
+                    <ul>
+                        <li>Checks for viruses when the computer starts up, executable files are run, when files are accessed or copied</li>
+                        <li>If a virus is detected the antivirus software will automatically warn the user or remove the virus</li>
+                    </ul>
+                </li>
+                <li>Firewalls
+                    <ul>
+                        <li>Used to restrict access to a network from outsiders</li>
+                        <li>Uses a combination of hardware and software that will only allow authorised users into the system</li>
+                    </ul>
+                </li>
+                <li>Passwords
+                    <ul>
+                        <li>Used by the NOS to identify authorised users of the network and grant access to appropriate data 
+and resources</li>
+                        <li>Used in conjunction with a username</li>
+                        <li>To be most effective passwords should follow protocols such as:
+                            <ul>
+                                <li>Alphanumeric</li>
+                                <li>8 or more characters</li>
+                                <li>Changed regularly</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Biometrics
+                    <ul>
+                        <li>Uses a human characteristic (such as finger print or retinal patterns) to identify authorised users of the network</li>
+                        <li>More reliable than password as it must be the actual user who is identified</li>
+                    </ul>
+                </li>
+                <li>Back ups
+                    <ul>
+                        <li>Regular copies of the data and information are made and stored offsite</li>
+                        <li>If the network data is affected, the latest back up can be used to restore the data on the network</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>   
 
     <footer>
         By Jack
