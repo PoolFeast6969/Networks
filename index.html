@@ -99,7 +99,7 @@
         position: relative;
         min-width: 70px;
         flex: 1 1 auto;
-        background-clip: padding-box;
+        background-clip: border-box;
         background-image: linear-gradient(#ffffff,#91a9cb);
     }
     nav:not(.scroll) .button:hover {
@@ -123,11 +123,9 @@
     }
     nav:not(.scroll) .button:after {
         border-color: transparent;
-        border-top-color: black;
     }
     nav:not(.scroll) .button:before {
         border-color: transparent;
-        border-top-color: white;
     }
     .button:hover:after {
         border-width: 25px;
