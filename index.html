@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="jquery-1.11.1.min.js"></script>
     <script src="flowtype.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     
 <style>
@@ -138,7 +137,7 @@
         height: calc(100vh - 100px);
         border-radius: 5px;
         color: black;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
     section > * {
         height: 100%;
@@ -152,6 +151,29 @@
         padding: 40px 20px;
         flex: 3 0 auto;
         color: white;
+    }
+    section img {
+        float: right;
+        position: relative;
+        width: 50%;
+        border-radius: 9999px;
+        box-shadow: 0 0 10px #1f75ff;
+        margin: 5px;
+        width: 300px;
+        height: 300px;
+    }
+    section img:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,255,255, 0.5);
+    }
+    .sectioncontent {
+        padding: 5px;    
     }
     *,
     *:before,
@@ -215,12 +237,14 @@ building or a group of buildings close together)</li>
                         <li>WANs are usually connected using ISDN landlines, satellite or internet</li>
                     </ul>
                 </li>
-                <li>Peer to Peer (P2P)</li>
+                <img src="types.jpg">
+                <li>Peer to Peer (P2P)
                     <ul>
                         <li>P2P refers to computers communicating and sharing information directly with each other</li>
                         <li>This is not a very efficient way to set up the network and is only used in small situations</li>
                     </ul>
-                <li>Client / Server</li>
+                </li>
+                <li>Client / Server
                     <ul>
                         <li>Client / Server refers to when there is a master computer (server) linked to a number of
 workstation (clients)</li>
@@ -229,6 +253,7 @@ information with the clients</li>
                         <li>Unlike P2P, the clients only communicate with the server, they do not communicate with each
 other</li>
                     </ul>
+                </li>
             </ul>
         </div>
     </section>
@@ -260,6 +285,7 @@ into a digital signal so it can be understood by the computer</li>
                         <li>By transferring electronic signals through strands of material that conduct electromagnetic waves</li>
                     </ul>
                 </li>
+                <img src="hardware.jpg">
                 <li>Switch
                     <ul>
                         <li>A switch is a connection point that links to a number of cables coming from various computers or 
@@ -299,6 +325,7 @@ the devices on the network</li>
                         <li>NOS managers the security so that only authorised users can access the resources</li>
                     </ul>
                 </li>
+                <img src="software.jpg">
                 <li>Application software
                     <ul>
                         <li>There is also software that is designed to be used by computers within a network. These include: 
@@ -328,6 +355,7 @@ the devices on the network</li>
                         <li>Category 6 (CAT6) is currently the most popular for new installations</li>
                     </ul>
                 </li>
+                <img src="wired.jpg">
                 <li>Fibre optic
                     <ul>
                         <li>Made from special glass or plastic strands</li>
@@ -353,6 +381,7 @@ the devices on the network</li>
                         <li>Bluetooth uses radio waves</li>
                     </ul>
                 </li>
+                <img src="wireless.jpg">
                 <li>Microwaves
                     <ul>
                         <li>Requires a concave dish, antenna and transceiver</li>
@@ -391,6 +420,7 @@ the devices on the network</li>
                         <li>Can present itself via emails</li>
                     </ul>
                 </li>
+                <img src="threats.jpg">
                 <li>Trojan
                     <ul>
                         <li>Infects a computer changing the way it is connected or the way it is displayed</li>
@@ -427,6 +457,7 @@ information</li>
                         <li>If a virus is detected the antivirus software will automatically warn the user or remove the virus</li>
                     </ul>
                 </li>
+                <img src="security.jpg">
                 <li>Firewalls
                     <ul>
                         <li>Used to restrict access to a network from outsiders</li>
